@@ -1,0 +1,13 @@
+<!-- 更健壮的音乐播放器代码 -->
+<audio id="bg-music" loop preload="metadata" crossorigin="anonymous">
+    <!-- 多个备用源 -->
+    <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3" type="audio/mpeg">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-romantic-sunset-687.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_ecb98f6b28.mp3" type="audio/mpeg">
+    
+    <!-- 本地备用 -->
+    <source src="music/love.mp3" type="audio/mpeg">
+    <source src="music/love.ogg" type="audio/ogg">
+    
+    您的浏览器不支持音频播放，但心意已收到 ❤️
+</audio>
