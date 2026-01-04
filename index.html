@@ -2,29 +2,38 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>致王陆洁 - 我的心意</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 移动端优先的CSS */
+        /* 修复所有兼容性问题 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            position: relative;
         }
         
         body {
-            min-height: 100vh;
-            width: 100%;
-            overflow-x: hidden;
-            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             background: linear-gradient(-45deg, #ff6b9d, #ff8fab, #ffb3c6, #ffccd5);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            position: relative;
             color: #333;
-            touch-action: manipulation;
+            min-height: 100vh;
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            touch-action: pan-y pinch-zoom;
         }
         
         @keyframes gradientBG {
@@ -33,13 +42,13 @@
             100% { background-position: 0% 50%; }
         }
         
-        /* 移动端适配的星星 */
+        /* 星空背景 */
         .stars {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             z-index: 1;
             pointer-events: none;
         }
@@ -52,28 +61,26 @@
         }
         
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1); }
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
         }
         
-        /* 主容器 - 移动端优化 */
+        /* 主容器 - 修复滚动问题 */
         .container {
             width: 95%;
-            max-width: 500px;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            max-width: 600px;
+            margin: 20px auto 40px;
+            background: rgba(255, 255, 255, 0.97);
             border-radius: 25px;
             padding: 25px 20px;
-            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.2);
             position: relative;
             z-index: 2;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            overflow: visible;
+            min-height: auto;
         }
         
-        /* 标题区域 - 移动端适配 */
+        /* 标题 */
         .header {
             text-align: center;
             margin-bottom: 25px;
@@ -82,17 +89,22 @@
         }
         
         .header h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 10px;
             background: linear-gradient(135deg, #ff6b9d, #ff8fab);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
-            letter-spacing: 1px;
+        }
+        
+        @media (min-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
         }
         
         .header h2 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #ff6b9d;
             margin-bottom: 15px;
             font-weight: 500;
@@ -100,7 +112,7 @@
         
         .heart-icon {
             color: #ff6b9d;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin: 0 10px;
             animation: heartbeat 1.2s infinite;
             display: inline-block;
@@ -111,24 +123,22 @@
             50% { transform: scale(1.15); }
         }
         
-        /* 表白对象区域 - 专门为王陆洁设计 */
+        /* 表白对象区域 - 替换为王陆洁 */
         #beloved-person {
             padding: 20px 15px;
             background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 182, 193, 0.1));
             border-radius: 20px;
             margin: 20px 0;
             border: 2px solid #ff8fab;
-            position: relative;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.15);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.1);
         }
         
         #beloved-person h3 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #ff6b9d;
             margin-bottom: 10px;
             font-weight: 700;
-            letter-spacing: 2px;
         }
         
         #beloved-person p {
@@ -137,7 +147,7 @@
             font-style: italic;
         }
         
-        /* 表白信区域 - 移动端优化 */
+        /* 表白信区域 - 确保可以滚动 */
         .love-letter {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
@@ -145,18 +155,18 @@
             margin: 25px 0;
             line-height: 1.7;
             font-size: 1.05rem;
-            max-height: 60vh;
+            max-height: 300px;
             overflow-y: auto;
             border-left: 4px solid #ff6b9d;
             text-align: justify;
-            -webkit-overflow-scrolling: touch; /* 流畅滚动 */
+            -webkit-overflow-scrolling: touch;
         }
         
         .love-letter p {
             margin-bottom: 15px;
         }
         
-        /* 按钮区域 - 触摸友好 */
+        /* 按钮区域 - 修复点击问题 */
         .buttons {
             display: flex;
             flex-direction: column;
@@ -177,9 +187,11 @@
             justify-content: center;
             gap: 12px;
             width: 100%;
-            touch-action: manipulation;
+            min-height: 56px;
+            -webkit-appearance: none;
+            appearance: none;
             position: relative;
-            overflow: hidden;
+            z-index: 10;
         }
         
         .btn:active {
@@ -189,11 +201,11 @@
         .yes-btn {
             background: linear-gradient(135deg, #ff6b9d, #ff8fab);
             color: white;
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
         
         .yes-btn:hover, .yes-btn:active {
-            box-shadow: 0 12px 30px rgba(255, 107, 157, 0.6);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
         }
         
         .no-btn {
@@ -206,49 +218,12 @@
             background: rgba(255, 107, 157, 0.2);
         }
         
-        /* 心形动画 - 移动端优化 */
-        .hearts-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .heart {
-            position: absolute;
-            color: rgba(255, 107, 157, 0.7);
-            font-size: 20px;
-            opacity: 0;
-            animation: floatUp 6s linear infinite;
-            will-change: transform, opacity;
-        }
-        
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* 音乐控制 - 移动端位置 */
+        /* 音乐控制 */
         .music-control {
             position: fixed;
-            bottom: 80px;
+            bottom: 20px;
             right: 20px;
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             border-radius: 50%;
             width: 55px;
             height: 55px;
@@ -258,8 +233,7 @@
             cursor: pointer;
             z-index: 100;
             border: 2px solid #ff6b9d;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
-            touch-action: manipulation;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
         }
         
         .music-control:active {
@@ -267,34 +241,23 @@
         }
         
         .music-control i {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #ff6b9d;
         }
         
-        /* 移动端触摸提示 */
-        .touch-hint {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 15px;
-            display: none;
-        }
-        
-        /* 成功页面 - 移动端优化 */
+        /* 成功页面 */
         .success {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             padding: 20px;
-            text-align: center;
         }
         
         .success-content {
@@ -302,14 +265,19 @@
             border-radius: 25px;
             padding: 30px 25px;
             max-width: 90%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
         
         .success h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #ff6b9d;
             margin-bottom: 20px;
-            font-weight: 700;
         }
         
         .success p {
@@ -328,11 +296,7 @@
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .close-btn:active {
-            transform: scale(0.95);
+            min-height: 50px;
         }
         
         /* 响应式调整 */
@@ -342,59 +306,37 @@
                 padding: 35px 30px;
             }
             
-            .header h1 {
-                font-size: 2.8rem;
-            }
-            
-            .header h2 {
-                font-size: 1.6rem;
-            }
-            
-            #beloved-person h3 {
-                font-size: 2.5rem;
-            }
-            
             .buttons {
                 flex-direction: row;
             }
             
             .btn {
                 width: auto;
-                padding: 20px 40px;
+                flex: 1;
+                min-width: 200px;
+            }
+        }
+        
+        /* 小屏幕优化 */
+        @media (max-width: 480px) {
+            .container {
+                width: 98%;
+                padding: 20px 15px;
+                margin: 10px auto;
             }
             
-            .music-control {
-                bottom: 30px;
-                width: 60px;
-                height: 60px;
+            .love-letter {
+                max-height: 50vh;
+                font-size: 1rem;
             }
             
-            .touch-hint {
-                display: block;
+            .header h1 {
+                font-size: 1.8rem;
             }
-        }
-        
-        /* 防止文本选中 */
-        .no-select {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        
-        /* 滚动条优化 */
-        .love-letter::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .love-letter::-webkit-scrollbar-track {
-            background: rgba(255, 107, 157, 0.1);
-            border-radius: 3px;
-        }
-        
-        .love-letter::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #ff6b9d, #ff8fab);
-            border-radius: 3px;
+            
+            #beloved-person h3 {
+                font-size: 1.8rem;
+            }
         }
         
         /* 底部装饰 */
@@ -406,13 +348,51 @@
             color: #888;
             font-size: 0.9rem;
         }
+        
+        /* 心形动画 */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.7);
+            font-size: 20px;
+            opacity: 0;
+            animation: floatUp 6s linear infinite;
+        }
+        
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        /* 确保所有浏览器兼容 */
+        input, button, textarea {
+            font-size: 16px; /* 防止iOS缩放 */
+        }
+        
+        /* 修复iOS Safari的100vh问题 */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                height: -webkit-fill-available;
+            }
+        }
     </style>
 </head>
-<body class="no-select">
+<body>
     <!-- 星空背景 -->
     <div class="stars" id="stars"></div>
     
-    <!-- 漂浮的心形 -->
+    <!-- 漂浮心形 -->
     <div class="hearts-container" id="hearts-container"></div>
     
     <!-- 主容器 -->
@@ -420,13 +400,12 @@
         <div class="header">
             <h1><i class="fas fa-heart heart-icon"></i> 致王陆洁 <i class="fas fa-heart heart-icon"></i></h1>
             <h2>一封特别的告白信</h2>
-            <p class="touch-hint">点击下方按钮查看我的心意</p>
         </div>
         
         <!-- 表白对象区域 -->
         <div id="beloved-person">
             <h3>给亲爱的王陆洁</h3>
-            <p>这份心意是专门为你准备的</p>
+            <p>这份心意是专门为你准备的，希望你能感受到我的真诚 ❤️</p>
         </div>
         
         <div class="love-letter" id="love-letter">
@@ -435,8 +414,9 @@
             <p>和你在一起的每一刻都让我感到无比幸福和安心。我喜欢看你专注的样子，喜欢听你分享生活中的点滴，喜欢所有关于你的一切。</p>
             <p>或许我不擅长用华丽的词藻表达感情，但我的每一份心意都是真挚的。我想陪你度过每一个平凡而又特别的日子，分享你的喜怒哀乐。</p>
             <p>今天，我想对你说：我喜欢你，王陆洁！这份喜欢不是一时的冲动，而是经过时间沉淀的真挚情感。</p>
+            <p>你愿意给我一个机会，让我走进你的世界，成为那个可以守护你、陪伴你的人吗？</p>
             <p style="text-align: right; margin-top: 25px; font-weight: 600;">
-                —— 汤智翔<br>
+                —— 一直默默关注着你的人<br>
                 <span style="font-size: 0.9rem; color: #ff6b9d;">❤️</span>
             </p>
         </div>
@@ -452,6 +432,7 @@
         
         <div class="footer">
             <p><i class="far fa-heart"></i> 用心制作的表白页面 <i class="far fa-heart"></i></p>
+            <p style="font-size: 0.8rem; margin-top: 5px;">可以上下滑动查看内容</p>
         </div>
     </div>
     
@@ -463,20 +444,23 @@
     <!-- 成功页面 -->
     <div class="success" id="success">
         <div class="success-content">
-            <h1>太棒了！</h1>
-            <p>谢谢你,王陆洁！<br>你让我的世界变得更加美好。<br>我会珍惜这份缘分，用心对待我们的感情。</p>
-            <button class="close-btn" id="close-btn">继续浪漫之旅 ❤️</button>
+            <h1>❤️ 太棒了！ ❤️</h1>
+            <p>谢谢你，王陆洁！<br>你让我的世界变得更加美好。<br>我会珍惜这份缘分，用心对待我们的感情。</p>
+            <button class="close-btn" id="close-btn">继续浪漫之旅</button>
         </div>
     </div>
     
     <!-- 背景音乐 -->
-    <audio id="bg-music" loop preload="auto">
+    <audio id="bg-music" loop preload="metadata">
         <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3" type="audio/mpeg">
+        <source src="https://cdn.jsdelivr.net/gh/zhixiangtang/audio@main/music/love.mp3" type="audio/mpeg">
     </audio>
     
     <script>
-        // 移动端优化初始化
+        // 修复所有兼容性问题
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('页面加载完成，初始化...');
+            
             // 创建星星背景
             createStars();
             
@@ -489,20 +473,19 @@
             // 绑定事件
             bindEvents();
             
-            // 添加触摸提示
-            addTouchHint();
+            // 测试功能
+            testFunctionality();
         });
         
-        // 创建星星
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starCount = window.innerWidth < 768 ? 80 : 120;
+            const starCount = 100;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
                 
-                const size = Math.random() * 2 + 1;
+                const size = Math.random() * 3 + 1;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 star.style.left = `${Math.random() * 100}vw`;
@@ -513,10 +496,9 @@
             }
         }
         
-        // 创建心形
         function createHearts() {
             const heartsContainer = document.getElementById('hearts-container');
-            const heartCount = window.innerWidth < 768 ? 15 : 25;
+            const heartCount = 20;
             
             for (let i = 0; i < heartCount; i++) {
                 setTimeout(() => {
@@ -539,35 +521,30 @@
             }
         }
         
-        // 音乐控制
         let isPlaying = false;
         let bgMusic;
         
         function initMusic() {
             bgMusic = document.getElementById('bg-music');
-            bgMusic.volume = 0.5;
+            bgMusic.volume = 0.3;
             
-            // 移动端需要用户交互才能播放音乐
+            // 移动端需要用户交互才能播放
             document.addEventListener('touchstart', function initAudio() {
-                if (!isPlaying) {
-                    bgMusic.play().then(() => {
-                        isPlaying = true;
-                        updateMusicIcon();
-                    }).catch(e => {
-                        console.log("音乐播放需要用户交互");
-                    });
-                }
+                bgMusic.play().then(() => {
+                    isPlaying = true;
+                    updateMusicIcon();
+                }).catch(e => {
+                    console.log("音乐需要用户交互");
+                });
                 document.removeEventListener('touchstart', initAudio);
-            });
+            }, { once: true });
         }
         
-        // 更新音乐图标
         function updateMusicIcon() {
             const musicIcon = document.getElementById('music-icon');
             musicIcon.className = isPlaying ? 'fas fa-volume-up' : 'fas fa-volume-mute';
         }
         
-        // 绑定事件
         function bindEvents() {
             const musicControl = document.getElementById('music-control');
             const yesBtn = document.getElementById('yes-btn');
@@ -576,36 +553,56 @@
             const successPage = document.getElementById('success');
             
             // 音乐控制
-            musicControl.addEventListener('click', function() {
+            musicControl.addEventListener('click', function(e) {
+                e.stopPropagation();
                 if (isPlaying) {
                     bgMusic.pause();
                 } else {
                     bgMusic.play().catch(e => {
-                        console.log("播放失败，需要用户交互");
+                        console.log("播放失败");
                     });
                 }
                 isPlaying = !isPlaying;
                 updateMusicIcon();
             });
             
-            // 我愿意按钮
-            yesBtn.addEventListener('click', function() {
+            // 修复按钮点击问题
+            yesBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('点击了"我愿意"按钮');
                 successPage.style.display = 'flex';
                 createCelebration();
+                
+                // 确保按钮点击有效
+                this.blur();
+            });
+            
+            yesBtn.addEventListener('touchstart', function(e) {
+                e.stopPropagation();
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            yesBtn.addEventListener('touchend', function(e) {
+                e.stopPropagation();
+                this.style.transform = 'scale(1)';
             });
             
             // 让我想想按钮
-            noBtn.addEventListener('click', function() {
-                // 移动端优化：按钮轻微移动
-                const maxX = window.innerWidth - noBtn.offsetWidth - 40;
-                const maxY = window.innerHeight - noBtn.offsetHeight - 40;
+            noBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('点击了"让我想想"按钮');
                 
-                const x = Math.min(maxX, Math.max(20, Math.random() * maxX));
-                const y = Math.min(maxY, Math.max(20, Math.random() * maxY));
+                // 计算可移动范围
+                const maxX = window.innerWidth - this.offsetWidth - 20;
+                const maxY = window.innerHeight - this.offsetHeight - 20;
                 
-                noBtn.style.position = 'fixed';
-                noBtn.style.left = `${x}px`;
-                noBtn.style.top = `${y}px`;
+                const x = Math.max(20, Math.random() * maxX);
+                const y = Math.max(20, Math.random() * maxY);
+                
+                this.style.position = 'fixed';
+                this.style.left = `${x}px`;
+                this.style.top = `${y}px`;
+                this.style.zIndex = '1001';
                 
                 // 改变文字
                 const messages = [
@@ -616,7 +613,7 @@
                     "我会一直等你"
                 ];
                 const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-                noBtn.innerHTML = `<i class="fas fa-smile"></i> ${randomMessage}`;
+                this.innerHTML = `<i class="fas fa-smile"></i> ${randomMessage}`;
                 
                 // 让"我愿意"按钮更有吸引力
                 yesBtn.style.transform = 'scale(1.1)';
@@ -630,24 +627,19 @@
                 successPage.style.display = 'none';
             });
             
-            // 触摸优化：防止长按弹出菜单
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
+            // 修复移动端滚动问题
+            document.addEventListener('touchmove', function(e) {
+                // 允许默认的滚动行为
+            }, { passive: true });
+            
+            // 修复点击穿透问题
+            document.addEventListener('click', function(e) {
+                if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+                    e.preventDefault();
+                }
             });
         }
         
-        // 添加触摸提示
-        function addTouchHint() {
-            if ('ontouchstart' in window) {
-                const hint = document.querySelector('.touch-hint');
-                if (hint) {
-                    hint.style.display = 'block';
-                }
-            }
-        }
-        
-        // 创建庆祝效果
         function createCelebration() {
             const colors = ['#ff6b9d', '#ff8fab', '#ffb3c6', '#ffffff'];
             const successPage = document.getElementById('success');
@@ -656,7 +648,7 @@
                 setTimeout(() => {
                     const firework = document.createElement('div');
                     firework.style.cssText = `
-                        position: absolute;
+                        position: fixed;
                         width: 8px;
                         height: 8px;
                         border-radius: 50%;
@@ -664,12 +656,13 @@
                         left: ${Math.random() * 100}vw;
                         top: ${Math.random() * 100}vh;
                         z-index: 1001;
+                        pointer-events: none;
                     `;
                     
-                    successPage.appendChild(firework);
+                    document.body.appendChild(firework);
                     
                     // 简单动画
-                    firework.animate([
+                    const animation = firework.animate([
                         { transform: 'scale(0)', opacity: 1 },
                         { transform: 'scale(2)', opacity: 0 }
                     ], {
@@ -677,18 +670,43 @@
                         easing: 'ease-out'
                     });
                     
-                    setTimeout(() => firework.remove(), 800);
+                    animation.onfinish = () => firework.remove();
                 }, i * 100);
             }
         }
         
-        // 防止滚动穿透
-        document.addEventListener('touchmove', function(e) {
-            if (e.target.classList.contains('love-letter')) {
-                return;
+        function testFunctionality() {
+            console.log('测试页面功能...');
+            console.log('页面高度:', document.documentElement.scrollHeight);
+            console.log('视口高度:', window.innerHeight);
+            console.log('可以滚动:', document.documentElement.scrollHeight > window.innerHeight);
+            
+            // 确保页面可以滚动
+            if (document.documentElement.scrollHeight <= window.innerHeight) {
+                document.body.style.minHeight = '120vh';
             }
-            e.preventDefault();
-        }, { passive: false });
+        }
+        
+        // 修复iOS Safari的滚动问题
+        document.addEventListener('touchstart', function() {}, { passive: true });
+        
+        // 确保所有按钮都有正确的触摸反馈
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.style.opacity = '0.8';
+            });
+            
+            btn.addEventListener('touchend', function() {
+                this.style.opacity = '1';
+            });
+        });
+        
+        // 修复键盘弹出问题
+        window.addEventListener('resize', function() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        });
     </script>
 </body>
 </html>
