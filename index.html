@@ -2,124 +2,99 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>致王陆洁 - 我的心意</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 保持原有的CSS样式，只修改必要的部分 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
-            -webkit-text-size-adjust: 100%;
-            -moz-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
-        
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-            position: relative;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(-45deg, #ff6b9d, #ff8fab, #ffb3c6, #ffccd5);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(-45deg, #ff6b9d, #ff8fab, #ffb3c6);
             min-height: 100vh;
-            overflow-y: auto !important;
-            -webkit-overflow-scrolling: touch !important;
-            touch-action: pan-y pinch-zoom;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* 主容器 */
-        .container {
-            width: 95%;
-            max-width: 600px;
-            margin: 20px auto 40px;
-            background: rgba(255, 255, 255, 0.97);
-            border-radius: 25px;
-            padding: 25px 20px;
-            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.2);
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* 音乐控制区域 - 更显眼 */
-        .music-control-area {
-            background: rgba(255, 107, 157, 0.1);
-            border-radius: 15px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: center;
-            border: 2px solid #ff8fab;
-        }
-        
-        .music-control-area h4 {
-            color: #ff6b9d;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .music-control {
-            background: white;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            border: 2px solid #ff6b9d;
-            box-shadow: 0 3px 10px rgba(255, 107, 157, 0.2);
-            margin: 0 auto;
-            transition: all 0.3s;
+            overflow-x: hidden;
         }
         
-        .music-control:active {
-            transform: scale(0.95);
-        }
-        
-        .music-control i {
-            font-size: 1.3rem;
-            color: #ff6b9d;
-        }
-        
-        .music-status {
-            font-size: 0.9rem;
-            color: #ff8fab;
-            margin-top: 10px;
-            min-height: 20px;
-        }
-        
-        /* 表白对象区域 */
-        #beloved-person {
-            padding: 20px 15px;
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 182, 193, 0.1));
-            border-radius: 20px;
-            margin: 20px 0;
-            border: 2px solid #ff8fab;
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.2);
             text-align: center;
         }
         
-        #beloved-person h3 {
-            font-size: 2rem;
-            color: #ff6b9d;
-            margin-bottom: 10px;
-            font-weight: 700;
+        /* 音乐播放器样式 */
+        .music-player {
+            background: rgba(255, 107, 157, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px dashed #ff8fab;
         }
         
-        /* 按钮区域 */
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .music-btn {
+            background: #ff6b9d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .music-btn:hover {
+            background: #ff4d87;
+            transform: scale(1.05);
+        }
+        
+        .music-info {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            min-height: 20px;
+        }
+        
+        .file-size {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        #beloved-person {
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 182, 193, 0.1));
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+        
+        #beloved-person h3 {
+            color: #ff6b9d;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
         .buttons {
             display: flex;
             flex-direction: column;
@@ -134,23 +109,17 @@
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             width: 100%;
-            min-height: 56px;
-        }
-        
-        .btn:active {
-            transform: scale(0.98);
         }
         
         .yes-btn {
             background: linear-gradient(135deg, #ff6b9d, #ff8fab);
             color: white;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
         
         .no-btn {
@@ -159,335 +128,265 @@
             border: 2px solid #ff8fab;
         }
         
-        /* 成功页面 */
-        .success {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .success-content {
-            background: white;
-            border-radius: 25px;
-            padding: 30px 25px;
-            max-width: 90%;
-            text-align: center;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
         /* 响应式 */
-        @media (min-width: 768px) {
+        @media (max-width: 480px) {
             .container {
-                margin: 40px auto;
-                padding: 35px 30px;
+                padding: 20px 15px;
             }
             
-            .buttons {
-                flex-direction: row;
+            .music-controls {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .btn {
-                width: auto;
-                flex: 1;
+            .music-btn {
+                width: 80%;
+                justify-content: center;
             }
         }
-        
-        /* 其他样式保持不变... */
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-heart heart-icon"></i> 致王陆洁 <i class="fas fa-heart heart-icon"></i></h1>
-            <h2>一封特别的告白信</h2>
+            <h1><i class="fas fa-heart" style="color:#ff6b9d"></i> 致王陆洁 <i class="fas fa-heart" style="color:#ff6b9d"></i></h1>
+            <p style="color:#666">一封特别的告白信</p>
         </div>
         
-        <!-- 音乐控制区域 -->
-        <div class="music-control-area">
-            <h4>🎵 请先点击播放音乐 🎵</h4>
-            <div class="music-control" id="music-control">
-                <i class="fas fa-play" id="music-icon"></i>
+        <!-- 音乐播放器 -->
+        <div class="music-player">
+            <h3 style="color:#ff6b9d">🎵 背景音乐控制</h3>
+            <div class="music-controls">
+                <button class="music-btn" id="playBtn">
+                    <i class="fas fa-play"></i> 播放音乐
+                </button>
+                <button class="music-btn" id="pauseBtn">
+                    <i class="fas fa-pause"></i> 暂停
+                </button>
+                <button class="music-btn" id="volumeUpBtn">
+                    <i class="fas fa-volume-up"></i> 音量+
+                </button>
+                <button class="music-btn" id="volumeDownBtn">
+                    <i class="fas fa-volume-down"></i> 音量-
+                </button>
             </div>
-            <div class="music-status" id="music-status">
+            <div class="music-info" id="musicInfo">
                 点击播放按钮开始浪漫音乐
             </div>
+            <div class="file-size" id="fileSize">
+                推荐使用1-2MB的MP3文件
+            </div>
         </div>
         
-        <!-- 表白对象区域 -->
+        <!-- 表白对象 -->
         <div id="beloved-person">
             <h3>给亲爱的王陆洁</h3>
-            <p>这份心意是专门为你准备的 ❤️</p>
+            <p style="color:#ff8fab">这份心意是专门为你准备的 ❤️</p>
         </div>
         
-        <div class="love-letter" id="love-letter">
+        <!-- 表白信 -->
+        <div class="love-letter" style="text-align:left; line-height:1.6; padding:15px;">
             <p>亲爱的王陆洁：</p>
-            <p>遇见你，是我生命中最美好的意外。你的笑容总能照亮我的一天，你的声音是我最想听见的旋律。</p>
-            <p>和你在一起的每一刻都让我感到无比幸福和安心。我喜欢看你专注的样子，喜欢听你分享生活中的点滴，喜欢所有关于你的一切。</p>
-            <p>或许我不擅长用华丽的词藻表达感情，但我的每一份心意都是真挚的。我想陪你度过每一个平凡而又特别的日子，分享你的喜怒哀乐。</p>
-            <p>今天，我想对你说：我喜欢你，王陆洁！这份喜欢不是一时的冲动，而是经过时间沉淀的真挚情感。</p>
-            <p>你愿意给我一个机会，让我走进你的世界，成为那个可以守护你、陪伴你的人吗？</p>
-            <p style="text-align: right; margin-top: 25px; font-weight: 600;">
-                —— 汤智翔<br>
-                <span style="font-size: 0.9rem; color: #ff6b9d;">❤️</span>
-            </p>
+            <p>遇见你是我最美好的意外，你的笑容总能照亮我的一天。</p>
+            <p>我想陪你度过每一个平凡而又特别的日子。</p>
+            <p>你愿意给我一个机会吗？</p>
         </div>
         
+        <!-- 按钮 -->
         <div class="buttons">
-            <button class="btn yes-btn" id="yes-btn">
+            <button class="btn yes-btn" id="yesBtn">
                 <i class="fas fa-heart"></i> 我愿意
             </button>
-            <button class="btn no-btn" id="no-btn">
+            <button class="btn no-btn" id="noBtn">
                 <i class="fas fa-smile"></i> 让我想想
             </button>
         </div>
         
-        <div class="footer">
-            <p><i class="far fa-heart"></i> 用心制作的表白页面 <i class="far fa-heart"></i></p>
-            <p style="font-size: 0.8rem; margin-top: 5px; color: #ff6b9d;">💡 提示：请先点击播放音乐，再浏览内容</p>
+        <!-- 文件上传提示 -->
+        <div style="background:#f8f9fa; padding:15px; border-radius:10px; margin-top:20px;">
+            <p style="font-size:0.9rem; color:#666;">
+                <i class="fas fa-info-circle" style="color:#ff6b9d"></i> 
+                如需添加音乐：上传MP3文件到GitHub仓库，然后修改下面路径：
+                <code style="background:#eee; padding:2px 5px; border-radius:3px;">love-song.mp3</code>
+            </p>
         </div>
     </div>
     
     <!-- 成功页面 -->
-    <div class="success" id="success">
-        <div class="success-content">
-            <h1>❤️ 太棒了！ ❤️</h1>
-            <p>谢谢你，王陆洁！<br>你让我的世界变得更加美好。<br>我会珍惜这份缘分，用心对待我们的感情。</p>
-            <button class="close-btn" id="close-btn">继续浪漫之旅</button>
+    <div class="success" id="success" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center;">
+        <div style="background:white; padding:30px; border-radius:20px; text-align:center;">
+            <h2 style="color:#ff6b9d">❤️ 谢谢你，王陆洁！ ❤️</h2>
+            <p style="margin:20px 0;">你让我成为了最幸福的人！</p>
+            <button id="closeSuccess" style="background:#ff6b9d; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">
+                关闭
+            </button>
         </div>
     </div>
     
-    <!-- 背景音乐 - 使用多个可靠的音乐源 -->
-    <audio id="bg-music" loop preload="metadata" style="display: none;">
-        <!-- 多个音乐源，按优先级排列 -->
-        <source src="https://cdn.jsdelivr.net/gh/zhixiangtang/audio@main/music/love.mp3" type="audio/mpeg" id="music-source-1">
-        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3" type="audio/mpeg" id="music-source-2">
-        <source src="https://assets.mixkit.co/music/preview/mixkit-valentines-day-493.mp3" type="audio/mpeg" id="music-source-3">
-        <source src="https://assets.mixkit.co/music/preview/mixkit-a-very-happy-christmas-897.mp3" type="audio/mpeg" id="music-source-4">
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_ecb98f6b28.mp3" type="audio/mpeg" id="music-source-5">
+    <!-- 背景音乐 - 使用本地文件 -->
+    <!-- ✅ preload="metadata" 已添加 ✅ -->
+    <audio id="bgMusic" loop preload="metadata">
+        <!-- 方案1：音乐文件在根目录 -->
+        <source src="love-song.mp3" type="audio/mpeg">
+        
+        <!-- 方案2：音乐文件在music文件夹 -->
+        <source src="music/romantic.mp3" type="audio/mpeg">
+        
+        <!-- 方案3：外部备用链接 -->
+        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3" type="audio/mpeg">
+        
         您的浏览器不支持音频播放
     </audio>
     
     <script>
-        // 修复音乐播放问题
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('页面加载完成');
-            
-            // 初始化音乐播放器
-            initMusicPlayer();
-            
-            // 绑定其他事件
-            bindEvents();
-            
-            // 添加用户交互提示
-            showMusicTip();
+        // 音乐播放控制
+        const bgMusic = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const volumeUpBtn = document.getElementById('volumeUpBtn');
+        const volumeDownBtn = document.getElementById('volumeDownBtn');
+        const musicInfo = document.getElementById('musicInfo');
+        const fileSize = document.getElementById('fileSize');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const successPage = document.getElementById('success');
+        const closeSuccess = document.getElementById('closeSuccess');
+        
+        // 初始化设置
+        bgMusic.volume = 0.5; // 初始音量50%
+        
+        // 播放音乐
+        playBtn.addEventListener('click', async function() {
+            try {
+                await bgMusic.play();
+                musicInfo.innerHTML = '✅ 音乐播放中... (音量: ' + Math.round(bgMusic.volume * 100) + '%)';
+                musicInfo.style.color = '#ff6b9d';
+                
+                // 尝试获取文件信息
+                if (bgMusic.duration) {
+                    fileSize.innerHTML = '音乐时长: ' + formatTime(bgMusic.duration);
+                }
+            } catch (error) {
+                console.error('播放错误:', error);
+                musicInfo.innerHTML = '❌ 播放失败: ' + getErrorMessage(error);
+                musicInfo.style.color = 'red';
+                
+                // 尝试备用方案
+                if (error.name === 'NotAllowedError') {
+                    setTimeout(() => {
+                        musicInfo.innerHTML += '<br>💡 提示: 请先点击页面任意位置，然后重试';
+                    }, 1000);
+                }
+            }
         });
         
-        function initMusicPlayer() {
-            const bgMusic = document.getElementById('bg-music');
-            const musicControl = document.getElementById('music-control');
-            const musicIcon = document.getElementById('music-icon');
-            const musicStatus = document.getElementById('music-status');
-            
-            // 设置初始状态
-            let isPlaying = false;
-            bgMusic.volume = 0.4; // 适中音量
-            
-            // 尝试预加载音乐
-            bgMusic.load();
-            
-            // 音乐控制点击事件
-            musicControl.addEventListener('click', function(e) {
-                e.stopPropagation();
-                
-                if (isPlaying) {
-                    // 暂停音乐
-                    bgMusic.pause();
-                    isPlaying = false;
-                    musicIcon.className = 'fas fa-play';
-                    musicStatus.innerHTML = '音乐已暂停';
-                    musicStatus.style.color = '#ff8fab';
-                } else {
-                    // 播放音乐 - 处理可能的错误
-                    const playPromise = bgMusic.play();
-                    
-                    if (playPromise !== undefined) {
-                        playPromise.then(() => {
-                            // 播放成功
-                            isPlaying = true;
-                            musicIcon.className = 'fas fa-pause';
-                            musicStatus.innerHTML = '音乐播放中...';
-                            musicStatus.style.color = '#ff6b9d';
-                            console.log('音乐播放成功');
-                        }).catch(error => {
-                            // 播放失败
-                            console.error('音乐播放失败:', error);
-                            musicStatus.innerHTML = '❌ 播放失败，请点击页面任意位置后重试';
-                            musicStatus.style.color = '#ff4757';
-                            
-                            // 尝试切换音乐源
-                            retryWithAlternateSource();
-                        });
-                    }
-                }
-            });
-            
-            // 音乐加载错误处理
-            bgMusic.addEventListener('error', function(e) {
-                console.error('音乐加载错误:', e);
-                musicStatus.innerHTML = '⚠️ 正在尝试备用音乐源...';
-                
-                // 自动尝试下一个音乐源
-                retryWithAlternateSource();
-            });
-            
-            // 音乐播放结束
-            bgMusic.addEventListener('ended', function() {
-                console.log('音乐播放结束');
-                musicStatus.innerHTML = '音乐播放结束';
-            });
-            
-            // 尝试备用音乐源
-            function retryWithAlternateSource() {
-                const currentSource = bgMusic.currentSrc;
-                const sources = [
-                    'https://cdn.jsdelivr.net/gh/zhixiangtang/audio@main/music/love.mp3',
-                    'https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3',
-                    'https://assets.mixkit.co/music/preview/mixkit-valentines-day-493.mp3',
-                    'https://assets.mixkit.co/music/preview/mixkit-a-very-happy-christmas-897.mp3'
-                ];
-                
-                // 找到当前源在列表中的位置
-                let currentIndex = sources.findIndex(src => currentSource.includes(src));
-                
-                // 尝试下一个源
-                const nextIndex = (currentIndex + 1) % sources.length;
-                const nextSource = sources[nextIndex];
-                
-                console.log(`尝试切换到音乐源 ${nextIndex + 1}: ${nextSource}`);
-                
-                // 切换音乐源
-                bgMusic.src = nextSource;
-                bgMusic.load();
-                
-                // 如果是播放状态，自动播放
-                if (isPlaying) {
-                    setTimeout(() => {
-                        bgMusic.play().catch(e => {
-                            console.log('备用源播放失败，继续尝试下一个');
-                        });
-                    }, 500);
-                }
+        // 暂停音乐
+        pauseBtn.addEventListener('click', function() {
+            bgMusic.pause();
+            musicInfo.innerHTML = '⏸️ 音乐已暂停';
+            musicInfo.style.color = '#666';
+        });
+        
+        // 增加音量
+        volumeUpBtn.addEventListener('click', function() {
+            if (bgMusic.volume < 1) {
+                bgMusic.volume = Math.min(1, bgMusic.volume + 0.1);
+                updateVolumeDisplay();
             }
-            
-            // 音量控制（可选）
-            bgMusic.addEventListener('volumechange', function() {
-                console.log('音量:', bgMusic.volume);
-            });
-            
-            // 为了让音乐能在移动端播放，需要用户先与页面交互
-            document.addEventListener('click', function firstInteraction() {
-                // 预加载音乐但不自动播放
-                bgMusic.load();
-                document.removeEventListener('click', firstInteraction);
-            });
+        });
+        
+        // 减小音量
+        volumeDownBtn.addEventListener('click', function() {
+            if (bgMusic.volume > 0) {
+                bgMusic.volume = Math.max(0, bgMusic.volume - 0.1);
+                updateVolumeDisplay();
+            }
+        });
+        
+        // 更新音量显示
+        function updateVolumeDisplay() {
+            if (!bgMusic.paused) {
+                musicInfo.innerHTML = '✅ 音乐播放中... (音量: ' + Math.round(bgMusic.volume * 100) + '%)';
+            }
         }
         
-        function bindEvents() {
-            const yesBtn = document.getElementById('yes-btn');
-            const noBtn = document.getElementById('no-btn');
-            const closeBtn = document.getElementById('close-btn');
-            const successPage = document.getElementById('success');
-            
-            // 我愿意按钮
-            yesBtn.addEventListener('click', function() {
-                successPage.style.display = 'flex';
-                createCelebration();
-            });
-            
-            // 让我想想按钮
-            noBtn.addEventListener('click', function() {
-                const maxX = window.innerWidth - this.offsetWidth - 20;
-                const maxY = window.innerHeight - this.offsetHeight - 20;
-                
-                const x = Math.max(20, Math.random() * maxX);
-                const y = Math.max(20, Math.random() * maxY);
-                
-                this.style.position = 'fixed';
-                this.style.left = `${x}px`;
-                this.style.top = `${y}px`;
-                this.style.zIndex = '1001';
-                
-                const messages = ["再给我一次机会", "我真的很认真", "不要拒绝嘛", "考虑一下我", "我会一直等你"];
-                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-                this.innerHTML = `<i class="fas fa-smile"></i> ${randomMessage}`;
-            });
-            
-            // 关闭成功页面
-            closeBtn.addEventListener('click', function() {
-                successPage.style.display = 'none';
-            });
+        // 格式化时间
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + '分' + (secs < 10 ? '0' : '') + secs + '秒';
         }
         
-        function showMusicTip() {
-            const musicStatus = document.getElementById('music-status');
+        // 获取错误信息
+        function getErrorMessage(error) {
+            const errorMap = {
+                'NotSupportedError': '文件格式不支持',
+                'NetworkError': '网络错误，文件可能不存在',
+                'NotAllowedError': '需要用户交互',
+                'AbortError': '播放被中止'
+            };
+            return errorMap[error.name] || error.message;
+        }
+        
+        // 音乐事件监听
+        bgMusic.addEventListener('loadedmetadata', function() {
+            console.log('音乐元数据已加载');
+            if (bgMusic.duration) {
+                fileSize.innerHTML = '音乐时长: ' + formatTime(bgMusic.duration);
+            }
+        });
+        
+        bgMusic.addEventListener('error', function(e) {
+            console.error('音乐加载错误:', e);
+            musicInfo.innerHTML = '❌ 音乐文件加载失败，正在尝试备用源...';
             
-            // 3秒后显示提示
+            // 自动尝试下一个源
             setTimeout(() => {
-                if (musicStatus.innerHTML.includes('点击播放按钮')) {
-                    musicStatus.innerHTML = '💡 提示：点击上方的播放按钮开始音乐';
-                }
-            }, 3000);
-        }
+                tryNextSource();
+            }, 1000);
+        });
         
-        function createCelebration() {
-            const colors = ['#ff6b9d', '#ff8fab', '#ffb3c6', '#ffffff'];
+        // 尝试下一个音乐源
+        function tryNextSource() {
+            const sources = bgMusic.querySelectorAll('source');
+            let currentSrc = bgMusic.currentSrc;
             
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const firework = document.createElement('div');
-                    firework.style.cssText = `
-                        position: fixed;
-                        width: 8px;
-                        height: 8px;
-                        border-radius: 50%;
-                        background: ${colors[Math.floor(Math.random() * colors.length)]};
-                        left: ${Math.random() * 100}vw;
-                        top: ${Math.random() * 100}vh;
-                        z-index: 1001;
-                        pointer-events: none;
-                    `;
-                    
-                    document.body.appendChild(firework);
-                    
-                    firework.animate([
-                        { transform: 'scale(0)', opacity: 1 },
-                        { transform: 'scale(2)', opacity: 0 }
-                    ], {
-                        duration: 800,
-                        easing: 'ease-out'
-                    });
-                    
-                    setTimeout(() => firework.remove(), 800);
-                }, i * 100);
+            for (let i = 0; i < sources.length; i++) {
+                if (currentSrc.includes(sources[i].src) && i < sources.length - 1) {
+                    bgMusic.src = sources[i + 1].src;
+                    bgMusic.load();
+                    musicInfo.innerHTML = '🔄 正在尝试备用源 ' + (i + 2) + '...';
+                    return;
+                }
             }
+            
+            musicInfo.innerHTML = '❌ 所有音乐源都失败了';
         }
         
-        // 确保页面可以滚动
+        // 表白按钮
+        yesBtn.addEventListener('click', function() {
+            successPage.style.display = 'flex';
+        });
+        
+        noBtn.addEventListener('click', function() {
+            const x = Math.random() * (window.innerWidth - this.offsetWidth);
+            const y = Math.random() * (window.innerHeight - this.offsetHeight);
+            
+            this.style.position = 'fixed';
+            this.style.left = x + 'px';
+            this.style.top = y + 'px';
+            this.style.zIndex = '1000';
+        });
+        
+        // 关闭成功页面
+        closeSuccess.addEventListener('click', function() {
+            successPage.style.display = 'none';
+        });
+        
+        // 页面加载完成
         window.addEventListener('load', function() {
-            document.body.style.minHeight = Math.max(document.body.scrollHeight, window.innerHeight) + 'px';
+            console.log('页面已加载，音乐预加载中...');
+            musicInfo.innerHTML = '音乐已准备就绪，点击播放按钮开始';
         });
     </script>
 </body>
